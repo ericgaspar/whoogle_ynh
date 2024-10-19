@@ -4,6 +4,19 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
+# INSTALL PYTHON DEPENDENCIES
+#=================================================
+ynh_script_progression "Installing Python dependencies..."
+
+pushd $install_dir
+    python3 -m venv $install_dir/venv
+    ynh_hide_warnings $install_dir/venv/bin/pip install --upgrade pip 
+    ynh_hide_warnings $install_dir/venv/bin/pip install whoogle-search==$(ynh_app_upstream_version)
+popd
+
+chown -R $app:$app "$install_dir"
+
+#=================================================
 # SYSTEM CONFIGURATION
 #=================================================
 ynh_script_progression "Adding system configurations related to $app..."
@@ -13,20 +26,6 @@ ynh_config_add_nginx
 ynh_config_add_systemd
 
 yunohost service add "$app" --description="Privacy-respecting metasearch engine" --log="/var/log/$app/$app.log"
-
-#=================================================
-# INSTALL PYTHON DEPENDENCIES
-#=================================================
-ynh_script_progression "Installing Python dependencies..."
-
-pushd $install_dir
-    ynh_safe_rm "$install_dir/.venv"
-    python3 -m venv $install_dir/venv
-    ynh_hide_warnings $install_dir/venv/bin/pip install --upgrade pip 
-    ynh_hide_warnings $install_dir/venv/bin/pip install whoogle-search==$(ynh_app_upstream_version)
-popd
-
-chown -R $app:www-data "$install_dir"
 
 #=================================================
 # START SYSTEMD SERVICE

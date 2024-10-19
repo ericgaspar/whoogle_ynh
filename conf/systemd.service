@@ -1,5 +1,5 @@
 [Unit]
-Description=Whoogle
+Description=Whoogle: privacy-respecting metasearch engine
 After=network.target
 
 [Service]
