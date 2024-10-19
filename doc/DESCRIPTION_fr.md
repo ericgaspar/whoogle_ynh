@@ -1,1 +1,1 @@
-Ceci est une fausse description des fonctionalités de l'app
+Obtenez des résultats de recherche Google, mais sans aucune publicité, JavaScript, liens AMP, cookies ou suivi d'adresse IP. Facilement déployable en un clic en tant qu'application Docker et personnalisable avec un seul fichier de configuration. Rapide et simple à mettre en œuvre en tant que remplacement de moteur de recherche principal sur ordinateur et mobile.
