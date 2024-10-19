@@ -43,7 +43,7 @@ ynh_script_progression "Installing Python dependencies..."
 pushd $install_dir
     python3 -m venv $install_dir/venv
     ynh_hide_warnings $install_dir/venv/bin/pip install --upgrade pip 
-    ynh_hide_warnings $install_dir/venv/bin/pip pip install whoogle-search==0.9.0
+    ynh_hide_warnings $install_dir/venv/bin/pip install whoogle-search==0.9.0
 popd
 
 #=================================================
